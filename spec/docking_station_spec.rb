@@ -2,6 +2,24 @@ require 'docking_station'
 
 describe DockingStation do
 
+  # it 'gives the number of bikes as the total of working and broken bikes' do
+  #   rand(10).times do
+  #     subject.dock( Bike.new )
+  #   end
+  #   rand(10).times do
+  #     bike = Bike.new
+  #     bike.report_broken
+  #     subject.dock(bike)
+  #   end
+
+  # end
+
+  it 'gives the number of bikes as the total of working and broken bikes' do
+    n = rand(20)
+    n.times{ subject.dock(double(:bike, broken?: [true,false]))}
+    expect(subject.bikes.length).to eq n
+  end
+
   it { is_expected.to respond_to(:release_bike) }
 
   it 'fails if bike broken' do
