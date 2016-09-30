@@ -1,10 +1,6 @@
 class Garage
-  attr_accessor :broken_bikes, :working_bikes
 
-  def initialize
-    @broken_bikes = []
-    @working_bikes = []
-  end
+  include BikeContainer
 
   def fix
     @working_bikes = @broken_bikes

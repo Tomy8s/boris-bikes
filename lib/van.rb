@@ -2,12 +2,7 @@ require_relative 'docking_station'
 
 class Van
 
-  attr_accessor :broken_bikes, :working_bikes
-
-  def initialize
-    @broken_bikes = []
-    @working_bikes = []
-  end
+  include BikeContainer
 
   def pick_up(station)
     if station.broken_bikes.count >= 0
