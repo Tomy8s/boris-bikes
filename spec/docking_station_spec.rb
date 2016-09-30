@@ -1,24 +1,8 @@
 require 'docking_station'
+ require 'bike_container'
+require 'support/shared_examples_for_bike_container'
 
 describe DockingStation do
-
-  # it 'gives the number of bikes as the total of working and broken bikes' do
-  #   rand(10).times do
-  #     subject.dock( Bike.new )
-  #   end
-  #   rand(10).times do
-  #     bike = Bike.new
-  #     bike.report_broken
-  #     subject.dock(bike)
-  #   end
-
-  # end
-
-  it 'gives the number of bikes as the total of working and broken bikes' do
-    n = rand(20)
-    n.times{ subject.dock(double(:bike, broken?: [true,false]))}
-    expect(subject.bikes.length).to eq n
-  end
 
   it { is_expected.to respond_to(:release_bike) }
 
@@ -29,15 +13,10 @@ describe DockingStation do
     expect {subject.release_bike}.to raise_error 'No working bikes available'
   end
 
-
   it 'returns docked bikes' do
     bike = double(:bike, broken?: false, working?: true)
     subject.dock(bike)
     expect(subject.release_bike).to eq bike
-  end
-
-  it 'has a default capacity' do
-    expect(subject.capacity).to eq described_class::DEFAULT_CAPACITY
   end
 
   let(:bike) { double :bike }
