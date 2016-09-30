@@ -1,5 +1,5 @@
 require 'docking_station'
- require 'bike_container'
+require 'bike_container'
 require 'support/shared_examples_for_bike_container'
 
 describe DockingStation do
