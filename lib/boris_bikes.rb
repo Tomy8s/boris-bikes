@@ -1,0 +1,1 @@
+['van','garage','docking_station','bike'].each {|a| require_relative a}
